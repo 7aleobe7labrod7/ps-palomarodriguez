@@ -1,0 +1,13 @@
+/* assets/css/styles.css */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ajuste para que el scroll no tape los títulos con el header fijo (si agregas uno luego) */
+section {
+    scroll-margin-top: 2rem;
+}

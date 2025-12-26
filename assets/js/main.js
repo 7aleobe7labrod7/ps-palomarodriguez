@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const statusMsg = document.getElementById('formStatus');
 
     // ⚠️ REEMPLAZAR CON TU ID REAL DE FORMSPREE
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/TU_CODIGO_AQUI'; 
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqekknke'; 
 
     if(form) {
         form.addEventListener('submit', async function(e) {

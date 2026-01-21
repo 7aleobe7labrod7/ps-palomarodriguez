@@ -1,22 +1,17 @@
-// assets/js/main.js
 document.addEventListener('DOMContentLoaded', function() {
     
+    // --- LÓGICA DEL FORMULARIO ---
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const statusMsg = document.getElementById('formStatus');
-
-    // ⚠️ REEMPLAZAR CON TU ID REAL DE FORMSPREE
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqekknke'; 
 
     if(form) {
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-
-            // Feedback visual de carga
             const originalBtnText = submitBtn.innerText;
             submitBtn.innerText = 'Enviando...';
             submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-75');
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
@@ -30,21 +25,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (response.ok) {
                     statusMsg.innerText = '¡Mensaje enviado con éxito!';
-                    statusMsg.classList.remove('hidden', 'text-red-600');
-                    statusMsg.classList.add('text-green-600');
+                    statusMsg.className = 'text-center text-sm mt-2 text-green-600';
                     form.reset();
                 } else {
-                    throw new Error('Error en el envío');
+                    throw new Error('Error');
                 }
             } catch (error) {
                 statusMsg.innerText = 'Hubo un error. Intenta por WhatsApp.';
-                statusMsg.classList.remove('hidden', 'text-green-600');
-                statusMsg.classList.add('text-red-600');
+                statusMsg.className = 'text-center text-sm mt-2 text-red-600';
             } finally {
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-75');
+                statusMsg.classList.remove('hidden');
             }
         });
     }
+
+    // --- LÓGICA DEL CARRUSEL (SWIPER) ---
+    // Inicializamos Swiper después de que el DOM esté cargado
+    const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+    });
 });

@@ -11,3 +11,21 @@ html {
 section {
     scroll-margin-top: 2rem;
 }
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+
+.swiper-slide img {
+    max-width: 100%;
+    max-height: 550px; /* Evita que la imagen sea gigante en pantallas grandes */
+    width: auto;
+    display: block;
+}
+
+/* Color personalizado para la paginación que combine con el diseño de Paloma */
+.swiper-pagination-bullet-active {
+    background: #ff914d !important;
+}
